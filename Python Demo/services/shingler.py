@@ -8,7 +8,7 @@ def create_shingles(text, k):
 
     # Generate shingles of size k
     for i in range(len(words) - k + 1):
-        shingles = " ".join(words[i:i+k])
-        shingles.append(shingles)
-        
+        shingle = " ".join(words[i:i+k])
+        shingles.append(shingle)
+
     return shingles
