@@ -1,0 +1,13 @@
+import re
+
+def preprocess_text(text: str) -> str:
+    # Convert to lowercase
+    text = text.lower()
+
+    # Remove punctuation and special characters
+    text = re.sub(r'[^a-z0-9\s]', '', text)
+
+    # Remove extra whitespace
+    text = re.sub(r'\s+', ' ', text).strip()
+
+    return text
