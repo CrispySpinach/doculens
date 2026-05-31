@@ -1,13 +1,40 @@
-def jaccard_similarity(set1, set2):
+# Verify matches by comparing the actual shingles, not just their hashes
+def find_verified_matches(index_a, index_b):
+    matches = set()
 
-    # Calculate the intersection and union of the two sets
-    intersection = len(set1 & set2)
+    common_hashes = (
+        set(index_a.keys())
+        &
+        set(index_b.keys())
+    )
 
-    # Calculate the union of the two sets
-    union = len(set1 | set2)
+    for h in common_hashes:
 
-    # Handle the case where both sets are empty to avoid division by zero
+        for shingle_a in index_a[h]:
+
+            for shingle_b in index_b[h]:
+
+                if shingle_a == shingle_b:
+                    matches.add(shingle_a)
+
+    return matches
+
+# Calculate Jaccard similarity based on the verified matches and the total unique shingles in both documents
+def jaccard_similarity(
+    shingles_a,
+    shingles_b,
+    verified_matches
+):
+    union = len(
+        set(shingles_a)
+        |
+        set(shingles_b)
+    )
+
     if union == 0:
         return 0
-    
-    return (intersection / union) * 100
+
+    return (
+        len(verified_matches)
+        / union
+    ) * 100
