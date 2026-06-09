@@ -11,6 +11,8 @@ import '../widgets/mesh_background.dart';
 import '../widgets/window_manager.dart';
 import '../widgets/drop_zone.dart';
 
+import 'about_dev.dart';
+
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
@@ -189,7 +191,21 @@ class _HomeScreenState
                               );
                             },
                           ),
-                        )
+                        ),
+                      const Spacer(),
+                      TextButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (_) => const AboutScreen(),
+                            ),
+                          );
+                        },
+                        child: const Text(
+                          'About Developer',
+                        ),
+                      ),
                     ],
                   ),
                 ),
