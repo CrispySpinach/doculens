@@ -54,28 +54,37 @@ class _DocumentDropZoneState
         borderRadius:
             BorderRadius.circular(16),
         child: Container(
-          height: 180,
+          height: 220,
           width: double.infinity,
           decoration: BoxDecoration(
-            border: Border.all(
-              color: _dragging
-                  ? Colors.blue
-                  : Colors.grey.shade400,
-              width: 2,
-            ),
+            color: _dragging
+                ? const Color(0xFFEFF6FF)
+                : Colors.white,
+
             borderRadius:
-                BorderRadius.circular(16),
+                BorderRadius.circular(24),
+
+            boxShadow: [
+              BoxShadow(
+                color: _dragging
+                    ? const Color(0xFF2563EB)
+                        .withValues(alpha: 0.15)
+                    : Colors.black
+                        .withValues(alpha: 0.08),
+
+                blurRadius: 20,
+                offset: const Offset(0, 8),
+              ),
+            ],
           ),
           child: Column(
             mainAxisAlignment:
                 MainAxisAlignment.center,
             children: [
               Icon(
-                Icons.upload_file,
-                size: 48,
-                color: _dragging
-                    ? Colors.blue
-                    : null,
+                Icons.description_outlined,
+                size: 64,
+                color: const Color(0xFF2563EB),
               ),
 
               const SizedBox(height: 12),
